@@ -1,16 +1,40 @@
-`
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Markdown 基本教程](#markdown-基本教程)
+  - [一、标题](#一-标题)
+  - [二、段落](#二-段落)
+  - [三、引用区块](#三-引用区块)
+  - [四、列表](#四-列表)
+  - [五、代码](#五-代码)
+  - [六、链接](#六-链接)
+  - [七、图片](#七-图片)
+  - [八、字符转义](#八-字符转义)
+  - [九、内嵌 HTML 标签](#九-内嵌-html-标签)
+- [扩展教程](#扩展教程)
+  - [一、表格](#一-表格)
+  - [二、围栏代码块](#二-围栏代码块)
+  - [三、高级技巧](#三-高级技巧)
+
+<!-- /code_chunk_output -->
+
 
 # Markdown 基本教程 
 
 （<kbd>crtl</kbd>+<kbd>shift</kbd>+<kbd>v</kbd>预览，非实时）
 
-（英文输入模式下 <kbd>ctrl</kbd> + <kbd>k</kbd> 放掉，<kbd>v</kbd> 打开实时预览）
+（安装 Markdown Preview Enhanced 插件）
+
+（英文输入模式下 <kbd>ctrl</kbd> + <kbd>k</kbd> 放掉，然后按 <kbd>v</kbd> 打开实时预览）
 
 （ <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> 调出主命令框，输入 Markdown，选择则边栏预览）
 
 （在预览时， <kbd>esc</kbd> 打开索引侧边栏）
 
-## 一、Markdown 标题
+
+## 一、标题
 mk表格有两种格式。
 ### 1、 使用 = 和 - 标记一级和二级标题
 
@@ -39,7 +63,7 @@ mk表格有两种格式。
     ##### 五级标题
     ###### 六级标题
 
-## 二、Markdown 段落
+## 二、段落
 ### 1、 段落
 段落的换行是使用两个以上空格加上回车，或者使用一个空行表示开始一个新的段落。  
 
@@ -250,7 +274,7 @@ $(document).ready(function () {
     });
     ```
 
-## 五、链接
+## 六、链接
 ### 1、超链接语法
 超链接代码为`[超链接显示名](超链接地址 "超链接title")`
 > 这是一个链接 [Markdown语法](https://markdown.com.cn)。
@@ -318,7 +342,7 @@ $(document).ready(function () {
     [1]: <https://www.baidu.com> (百度)  
 
 
-## 六、图片
+## 七、图片
 ### 1、插入图片
 语法代码：`![图片alt](图片链接 "图片title")`。
 > ![这是图片](https://markdown.com.cn/assets/img/philly-magic-garden.9c0b4415.jpg "Magic Gardens")
@@ -331,7 +355,7 @@ $(document).ready(function () {
 
     [![沙漠中的岩石图片](https://markdown.com.cn/assets/img/shiprock.c3b9a023.jpg "markdown官方教程")](https://markdown.com.cn)
 
-## 七、字符转义
+## 八、字符转义
 ### 1、反斜杠
 使用“\”转义字符，进行转义。
 > 转义前：**加粗**
@@ -359,7 +383,7 @@ $(document).ready(function () {
 >
 > AT`&amp;`T
 
-## 八、内嵌 HTML 标签
+## 九、内嵌 HTML 标签
 对于 Markdown 涵盖范围之外的标签，都可以直接在文件里面用 HTML 本身。如需使用 HTML，不需要额外标注这是 HTML 或是 Markdown，只需 HTML 标签添加到 Markdown 文本中即可。
 
 ### 1、行级內联标签
@@ -478,7 +502,7 @@ Markdown基本语法允许您通过将行缩进四个空格或一个制表符来
     }
     ```
 
-### 语法高亮
+**语法高亮**
 许多Markdown处理器都支持受围栏代码块的语法突出显示。使用此功能，您可以为编写代码的任何语言添加颜色突出显示。要添加语法突出显示，请在受防护的代码块之前的反引号旁边指定一种语言。
 
 > ```json

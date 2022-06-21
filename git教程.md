@@ -13,12 +13,18 @@
     git reset --hard 版本号 //回退到指定版本
 
 ## 2、git远程仓库
-
+    //链接远程仓库
+    
     git config --global user.name "用户名"
     git config --global user.name "用户邮箱"
     git remote add origin 仓库地址 //链接远程仓库
-    git push -u origin master //推送到远程仓库
+
+    //将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。
+
+    git push -u origin master //-u指明默认仓库，然后推送到远程仓库
     git push origin master //推送到远程仓库
+    
+    git push //推送到默认仓库
 
 ## 3、git 两人协作-非冲突
 
@@ -51,4 +57,6 @@
     git push origin :分支名 //删除远程分支
     git branch -d 分支名 //删除本地分支
 
-使用<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>v</kbd>预览
+VScode使用<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>v</kbd>预览markdown文件
+
+VScode使用<kbd>ctrl</kbd>+<kbd>k</kbd>放掉,然后<kbd>v</kbd>实时预览markdown文件
