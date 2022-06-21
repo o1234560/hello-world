@@ -10,5 +10,8 @@ module.exports = defineConfig({
       }
     }
   },
-  lintOnSave: false // 暂时关闭代码格式检测
+  // lintOnSave: false, // 暂时关闭代码格式检测
+  lintOnSave: true,
+  //设置打包时的路径问题
+  publicPath: './'
 })

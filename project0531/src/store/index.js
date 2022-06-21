@@ -19,7 +19,8 @@ export default new Vuex.Store({
     cityId: '110100',
     cityName: '北京',
     cinemaList: [],
-    isTabBarShow: true
+    isTabBarShow: true,
+    userName: '请登录'
   },
   getters: {
   },
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     hide(state){
       state.isTabBarShow = false
+    },
+    setUsername(state,userName){
+      state.userName=userName
     }
   },
   actions: { // 支持异步,同步

@@ -9,6 +9,7 @@ import Detail from '@/views/DeTail'
 import Search from '@/views/SeaRch'
 import City from '@/views/CiTy'
 import store from '@/store/index'
+import Login from '@/views/LogIn'
 
 Vue.use(VueRouter)
 
@@ -63,6 +64,10 @@ const routes = [
     }
   },
   {
+    path: '/login',
+    component: Login
+  },
+  {
     path: '/',
     redirect: '/films'
   },
@@ -74,6 +79,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'hash', // 路由模式，history、hash（默认）
+  base: process.env.BASE_URL,
   routes
 })
 

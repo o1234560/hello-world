@@ -36,7 +36,7 @@ html,body{
 body{
   font-size: 16px;
 }
-ul{
+ul,li{
   list-style: none;
 }
 // 页面控制

@@ -1,20 +1,71 @@
 <template>
-  <div>
-    login
-    <h1>登录</h1>
-    <button @click="handleLogin">登录</button>
+  <div id="login">
+    <!-- login -->
+    <h1>登录页面</h1>
+    <van-form @submit="onSubmit">
+  <van-field
+    v-model="username"
+    name="用户名"
+    label="用户名"
+    placeholder="用户名"
+    :rules="[{ required: true, message: '请填写用户名' }]"
+  />
+  <van-field
+    v-model="password"
+    type="password"
+    name="密码"
+    label="密码"
+    placeholder="密码"
+    :rules="[{ required: true, message: '请填写密码' }]"
+  />
+  <div style="margin: 16px;">
+    <van-button round block type="info" native-type="submit">提交</van-button>
+  </div>
+</van-form>
   </div>
 </template>
 
 <script>
+import { Form, Toast } from 'vant';
+import { Field } from 'vant';
+
 export default {
+  data() {
+    return {
+      username: '',
+      password:''
+    }
+  },
   methods:{
-    handleLogin(){
+    onSubmit(values) {
+      console.log('submit', values)
+      Toast('登录成功')
       setTimeout(() => {
-        localStorage.setItem('token','后端返沪的token字段')
-        this.$router.push('/films') // 登陆后回到 film 
-      },0)
+        this.$store.commit('setUsername',this.username)
+        this.$router.push('/films')
+      }, 1000)
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+#login{
+  height: 100vh;
+  width: 100%;
+  // background: white;
+  text-align: center;
+}
+.van-form{
+  padding: 50% 10%;
+  width: 80%;
+}
+.van-cell, .van-field, .van-field--error{
+  // width: 100;
+  font-size: 1.25rem;
+}
+.van-button, .van-button--info, .van-button--normal, .van-button--block, .van-button--round{
+  // width: 80%;
+  font-size: 1.25rem;
+}
+</style>
