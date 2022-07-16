@@ -6,3 +6,5 @@
 2022/06/04 16:06:55 [emerg] 13164#21760: unknown directive "//" in D:\website\2022\nginx-1.21.6/.\conf\jack.conf:45
 2022/06/04 16:07:43 [error] 8572#10604: *7 CreateFile() "D:\website\2022\nginx-1.21.6/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
 2022/06/04 16:09:30 [error] 8572#10604: *10 CreateFile() "D:\website\2022\nginx-1.21.6/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2022/07/15 11:02:29 [notice] 2096#8840: signal process started
+2022/07/15 11:13:24 [notice] 10704#8616: signal process started

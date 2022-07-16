@@ -1,13 +1,33 @@
 <template>
   <div id="city">
-    <!-- city -->
-    <van-index-bar :index-list="computedList" @select="handleChange" :sticky="false">
-      <div v-for="data in cityList" :key="data.tyoe">
-        <van-index-anchor :index="data.type"/>
-        <van-cell  v-for="item in data.list" :title="item.name"
-          :key="item.cityId" @click="handleClick(item)"/>
-      </div>
+  <van-search
+    v-model="value"
+    placeholder="请输入城市名"
+    background="#f00"
+  />
+
+  <!-- 热门城市 -->
+  <ul class="hot" v-show="!show">
+    <div>热门城市</div>
+    <li v-for="data in citys" :key="data.cityId">
+      <button v-if="data.isHot===1" @click="handleClick(data)">{{data.name}}</button>
+    </li>
+  </ul>
+
+  <!-- city 列表 -->
+  <van-index-bar v-show="!show" :index-list="computedList" @select="handleChange" :sticky="false">
+    <div v-for="data in cityList" :key="data.type">
+      <van-index-anchor :index="data.type"/>
+      <van-cell  v-for="item in data.list" :title="item.name"
+        :key="item.cityId" @click="handleClick(item)"/>
+    </div>
   </van-index-bar>
+
+<!-- 搜索结果 -->
+  <ul class="citys">
+    <van-cell v-for="data in computedList02" :key="data.cityId" v-show="show"
+    @click="handleClick(data)">{{data.name}}</van-cell>
+  </ul>
   </div>
 </template>
 
@@ -27,7 +47,10 @@ export default {
   mixins: [obj], // 混入mixin,不会删除原来的
   data () {
     return {
-      cityList: []
+      cityList: [],
+      citys: [],
+      value: '',
+      show: false
     }
   },
   mounted () {
@@ -39,6 +62,10 @@ export default {
       }
     }).then(res => {
       // console.log(res.data.data.cities)
+      // 0、
+      this.citys = res.data.data.cities
+      // this.citys = this.citys.map(item=>item.name)
+      console.log(this.citys)
       // 1、 数据分组
       this.renderCity(res.data.data.cities)
       // 2、 数据渲染
@@ -65,7 +92,7 @@ export default {
           list: newList
         })
       })
-      console.log(this.cityList)
+      // console.log(this.cityList)
     },
     handleChange (data) {
       // console.log('change', data)
@@ -93,6 +120,20 @@ export default {
   computed: {
     computedList () {
       return this.cityList.map(item => item.type)
+    },
+    computedList02 () {
+      console.log('查找:', this.value)
+      // const ll=this.citys.filter(item => item.include(this.value))
+      // console.log(ll)
+      if (this.value.length !== 0) {
+        // eslint-disable-next-line
+        this.show = true
+        console.log(this.citys.filter(item => item.name.includes(this.value)))
+      } else {
+        // eslint-disable-next-line
+        this.show = false
+      }
+      return this.citys.filter(item => item.name.includes(this.value))
     }
   }
 }
@@ -100,27 +141,65 @@ export default {
 
 <style lang="scss">
 .van-toast{
-  min-width: 20px;
+  min-width: 1.25rem;
 }
+
+.van-search{
+ position: relative;
+}
+
+.hot{
+  background-color: #fff;
+  padding: 1rem 0rem;
+  div{
+    font-size: 14px;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #aaa;
+  }
+  li{
+    display: inline-block;
+    button{
+      font-size: .875rem;
+      margin: .625rem 1rem;
+      padding: 0.5rem 2rem;
+      background-color: #f7f8fa;
+      border: 0px;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
 .van-index-bar{
+  display: block;
   font-size: 1rem;
   .van-index-bar__index {
-    padding: 0 0.5rem 0 1rem;
-    font-weight: 500;
-    font-size: .625rem;
+    padding: 0 .5rem 0 1rem;
+    font-size: .875rem;
     line-height: 1rem;
-};
-.van-index-anchor {
+    // color: #aaa;
+    opacity: 0.5;
+  };
+  .van-index-anchor {
+    background-color: #f7f8fa;
+    color: #aaa;
     padding: 0 1rem;
-    font-size: .625rem;
+    font-size: .875rem;
     line-height: 2rem;
+  }
+  .van-cell{
+    padding: .625rem 1rem;
+    overflow: hidden;
+    color: #323233;
+    font-size: .875rem;
+    line-height: 1.5rem;
+  }
 }
-.van-cell{
-  padding: .625rem 1rem;
-  overflow: hidden;
-  color: #323233;
-  font-size: .875rem;
-  line-height: 1.5rem;
-}
+
+.citys{
+  // background-color: #fff;
+  .van-cell{
+    padding: 10px 20px;
+  }
 }
 </style>

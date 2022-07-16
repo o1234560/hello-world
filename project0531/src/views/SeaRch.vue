@@ -70,15 +70,15 @@ export default {
   .van-cell{
     font-size: .875rem;
     line-height: 1.5rem;
-    padding: 0.625rem 0rem;
+    padding: .625rem 0rem;
   }
   .van-search__action {
-    padding: 0 0.5rem;
+    padding: 0 .5rem;
     font-size: .875rem;
     line-height: 2.125rem;
   }
   .van-field__left-icon {
-    margin-right: 0.25rem;
+    margin-right: .25rem;
 }
 .van-field__left-icon .van-icon, .van-field__right-icon .van-icon {
     display: block;

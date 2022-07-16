@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <i class="iconfont icon-arrow-left-bold" @click="handleBack()"></i>
+    <i class="iconfont icon-arrow-left-bold" @click="handleBack()">返回</i>
     <slot></slot>
   </div>
 </template>

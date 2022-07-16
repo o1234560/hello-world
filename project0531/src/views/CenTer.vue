@@ -58,7 +58,7 @@ export default {
     background-color: white;
     height: 3.125rem;
     line-height: 3.125rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
     div{
       flex:1;
       text-align: center;
@@ -77,7 +77,8 @@ export default {
       padding-left: 2rem;
       height:3rem;
       line-height:3rem;
-      border-bottom: 1px solid #f0f0f0;
+      // margin-bottom: 1rem;
+      border-bottom: .0625rem solid #f0f0f0;
     }
   }
   footer{

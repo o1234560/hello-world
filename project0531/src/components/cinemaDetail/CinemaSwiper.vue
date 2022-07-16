@@ -4,6 +4,8 @@
     <div class="swiper-wrapper">
       <slot></slot>
     </div>
+
+    <div class="swiper-pagination"></div>
   </div>
 </template>
 
@@ -18,20 +20,22 @@ export default {
     },
     name: {
       type: String,
-      default: 'jack'
+      default: 'tom'
     }
   },
   mounted () {
-    // 方式一
-    // new Swiper('.swiper', { // 使用 默认的 swiper 类名 .swiper
-    //   slidesPerView: auto, // 根据 swiper-slide 的宽度自动设置
-    //   spaceBetween: 15
-    // })
-    //
-    // 方式二
     new Swiper('.' + this.name, { // 使用 自定义的 swiper 类名
       slidesPerView: this.slideNum, // 根据 传进来的参数 设置
-      spaceBetween: 15 // swiper-slide的间距 和 swiper-silde的宽度 的 15% 一样
+      // spaceBetween: 40, // 不好用。不要和slideToClickedSlide同时使用，不要slidesPerView同时使用，和swiper-slide的间距 和 swiper-silde的宽度 的 15% 一样,
+      slideToClickedSlide: true,
+      centeredSlides: true,
+      speed: 1000,
+      on: {
+        slideChangeTransitionEnd: function(){
+          // alert(this.activeIndex); // 切换结束时，告诉我现在是第几个slide
+          
+      },
+  },
     })
   }
 }

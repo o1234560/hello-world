@@ -7,10 +7,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   plugins: [createPersistedState({ // vuex 持久化
-    reducer: (state)=>{
-      return{
-        cityId:state.cityId,
-        cityName:state.cityName
+    reducer: (state) => {
+      return {
+        cityId: state.cityId,
+        cityName: state.cityName
       }
     }
   }
@@ -40,14 +40,14 @@ export default new Vuex.Store({
     clearCinemaList (state) {
       state.cinemaList = []
     },
-    show(state){
+    show (state) {
       state.isTabBarShow = true
     },
-    hide(state){
+    hide (state) {
       state.isTabBarShow = false
     },
-    setUsername(state,userName){
-      state.userName=userName
+    setUsername (state, userName) {
+      state.userName = userName
     }
   },
   actions: { // 支持异步,同步

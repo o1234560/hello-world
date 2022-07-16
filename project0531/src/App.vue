@@ -45,8 +45,8 @@ ul,li{
    width: 100%;
   //  background-color: #eee;
   section{
-    // width: 100%;
-    padding-bottom: .625rem;
+    height: 100%;
+    padding-bottom: 3.0625rem;
     // background-color: #eee;
   }
 }

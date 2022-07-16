@@ -10,71 +10,79 @@ import Search from '@/views/SeaRch'
 import City from '@/views/CiTy'
 import store from '@/store/index'
 import Login from '@/views/LogIn'
+import CinemaDetail from '@/views/CinemaDetail'
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes = [{
+  path: '/films',
+  component: Films,
+  children: [{
+    path: '/films/nowplay',
+    component: Nowplaying
+  },
+  {
+    path: '/films/comingsoon',
+    component: Comingsoon
+  },
   {
     path: '/films',
-    component: Films,
-    children: [
-      {
-        path: '/films/nowplay',
-        component: Nowplaying
-      },
-      {
-        path: '/films/comingsoon',
-        component: Comingsoon
-      },
-      {
-        path: '/films',
-        redirect: '/films/nowplay'
-      }
-    ]
-  },
-  {
-    path: '/detail',
-    component: Detail
-    // meta:{
-    //   isTabbarhide: true
-    // }
-  },
-  {
-    name: 'jack',
-    path: '/detail/:id',
-    component: Detail
-  },
-  {
-    path: '/cinemas',
-    component: Cinemas
-  },
-  {
-    path: '/city',
-    component: City
-  },
-  {
-    path: '/center',
-    component: Center
-  },
-  {
-    path: '/search',
-    component: Search,
-    meta: {
-      isTabbarHide: true
-    }
-  },
-  {
-    path: '/login',
-    component: Login
-  },
-  {
-    path: '/',
-    redirect: '/films'
-  },
-  {
-    path: '*',
-    redirect: 'films'
+    redirect: '/films/nowplay'
   }
+  ]
+},
+{
+  path: '/detail',
+  component: Detail
+  // meta:{
+  //   isTabbarhide: true
+  // }
+},
+{
+  name: 'jack',
+  path: '/detail/:id',
+  component: Detail
+},
+{
+  path: '/cinemas',
+  component: Cinemas
+},
+{
+  path: '/cinemadetail',
+  component: CinemaDetail
+},
+{
+  name: 'tom',
+  path: '/cinemadetail/:id',
+  component: CinemaDetail
+},
+{
+  path: '/city',
+  component: City
+},
+{
+  path: '/center',
+  component: Center
+},
+{
+  path: '/search',
+  component: Search,
+  meta: {
+    isTabbarHide: true
+  }
+},
+{
+  path: '/login',
+  component: Login
+},
+{
+  path: '/',
+  redirect: '/films'
+},
+{
+  path: '*',
+  redirect: 'films'
+}
 ]
 
 const router = new VueRouter({

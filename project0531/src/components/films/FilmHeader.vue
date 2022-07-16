@@ -16,7 +16,7 @@
 <style lang="scss" scoped>
 .myActive{
   color: red;
-  border-bottom: 2px solid red;
+  border-bottom: .125rem solid red;
 }
 ul{
   background: white;
@@ -24,6 +24,8 @@ ul{
   z-index: 100;
   height: 3.0625rem;
   line-height: 3.0625rem;
+  // border-bottom: 2px solid #eee;
+  // box-shadow: 0px 0px 5px #efefef;
   li{
     flex: 1;
     text-align: center;

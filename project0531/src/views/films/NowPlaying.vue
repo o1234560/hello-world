@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- nowplaying -->
+
     <van-list
     v-model="loading"
     :finished="finished"
@@ -27,8 +28,10 @@
               </div>
             </div>
         </div>
+        <span class="order">热映中</span>
       </van-cell>
     </van-list>
+
     <!-- <ul>
       <li v-for="data in datalist" :key="data.filmId" @click="handleChangePage(data.filmId)">
       </li>
@@ -116,12 +119,12 @@ export default {
   .van-list{
     width: 100%;
     background-color: white;
-    padding-bottom: 3.0625rem;
     .van-cell{
       // clear: both;
       overflow: hidden;
       padding: .9375rem;
       line-height: 1.25rem;
+      position: relative;
       img{
         width: 4.125rem;
         float: left;
@@ -142,6 +145,18 @@ export default {
           white-space: nowrap;
           width: 12.5rem;
         }
+      }
+      .order{
+        position: absolute;
+        right: 1rem;
+        top: 2rem;
+        font-size: 1rem;
+        padding: 0rem 0.5rem;
+        border-radius: 0.5rem;
+        // border: .0625rem solid red;
+        background-color: red;
+        color: #fff;
+        opacity: 0.7;
       }
     }
     .van-list__error-text, .van-list__finished-text, .van-list__loading {

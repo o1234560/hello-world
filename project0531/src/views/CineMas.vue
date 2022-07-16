@@ -1,6 +1,7 @@
 <template>
   <div id="cinemas">
-     <van-nav-bar title="影院" @click-left="onClickLeft" @click-right="onClickRight">
+    <div class="cinemabar">
+ <van-nav-bar title="影院" @click-left="onClickLeft" @click-right="onClickRight">
        <template #left>
          {{$store.state.cityName}} <van-icon name="arrow-down" />
        </template>
@@ -8,9 +9,12 @@
         <van-icon name="search" />
       </template>
     </van-nav-bar>
+    </div>
+
     <div class="box">
       <ul>
-        <li v-for="data in $store.state.cinemaList" :key="data.cinemaId">
+        <li v-for="data in $store.state.cinemaList" :key="data.cinemaId"
+        @click="handleChangePage(data.cinemaId)">
           <div class="left">
             <div>{{data.name}}</div>
             <div class="address">{{data.address}}</div>
@@ -26,7 +30,7 @@
 
 <script>
 // import http from '@/util/http'
-import BetterScroll from 'better-scroll'
+// import BetterScroll from 'better-scroll'
 // betterscroll 引入，提高性能
 // import { Toast } from 'vant'
 
@@ -42,23 +46,23 @@ export default {
       this.$store.dispatch('getCinemaData', this.$store.state.cityId)
         .then(res => {
           console.log('cinemas 数据加载完成')
-          this.$nextTick(() => {
-            new BetterScroll('.box', {
-              scrollbar: {
-                fade: true
-              }
-            })
-          })
+          // this.$nextTick(() => {
+          //   new BetterScroll('.box', {
+          //     scrollbar: {
+          //       fade: true
+          //     }
+          //   })
+          // })
         })
     } else {
       console.log('cinemas 使用缓存')
-      this.$nextTick(() => {
-        new BetterScroll('.box', {
-          scrollbar: {
-            fade: true
-          }
-        })
-      })
+      // this.$nextTick(() => {
+      //   new BetterScroll('.box', {
+      //     scrollbar: {
+      //       fade: true
+      //     }
+      //   })
+      // })
     }
     // http({
     //   url: `/gateway?cityId=${this.$store.state.cityId}&ticketFlag=1&k=8708327`,
@@ -87,30 +91,50 @@ export default {
     onClickRight () {
       // Toast('按钮')
       this.$router.push('/search')
+    },
+    handleChangePage (id) {
+      console.log(id)
+      // console.log('changePage:', id)
+      // this.$router.push(`/detail/${id}`)//通过命名路由跳转
+      this.$router.push({
+        name: 'tom',
+        params: {
+          id
+        }
+      })
     }
   }
 }
+
 </script>
 
 <style lang="scss">
 #cinemas{
-  // height: 100%;
+  height: 100%;
+  .cinemabar{
+    height: 3.0625rem;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+  }
 .box{
-  height: 47rem;
-  // margin-bottom: 2.4375rem;
+  width: 100%;
+  height: 100%;//高度未作修正，需要修正滚动条位置, 使得BetterScroll滚动条不溢出
+  // padding-bottom: 3.0625rem;
   overflow: hidden;
   background-color: #fff;
-  position: relative; //修正滚动条位置, 使得BetterScroll滚动条不溢出
+  position: relative;
   li{
     padding: .9375rem;
     font-size: .9375rem;
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-end;
     .left{
-      // flex: 4; // 两个flex不好用
-      width: 18.4375rem;
+      // flex: 4; // 两个flex可能会不好用
+      width: 80%;
       .address{
-        max-width: 14rem;
+        max-width: 100%;
         color: gray;
         font-size: .75rem;
         margin-top: .3125rem;

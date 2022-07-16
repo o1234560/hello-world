@@ -1,34 +1,35 @@
 <template>
   <div>
     <!-- nowplaying -->
-    <van-list
-    v-model="loading"
-    :finished="finished"
-    finished-text="没有更多了"
-    :immediate-check="false"
-    @load="onLoad"
-    >
-      <van-cell
-      v-for="data in datalist"
-      :key="data.filmId"
-      @click="handleChangePage(data.filmId)" >
-        <img :src="data.poster">
-        <div>
-          <div class="title">{{data.name}}</div>
-          <div class="content ">
-              <div :class="data.grade?'':'hidden'">
-                观众评分: <span style="color:red">{{data.grade}}</span>
+      <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      :immediate-check="false"
+      @load="onLoad"
+      >
+        <van-cell
+        v-for="data in datalist"
+        :key="data.filmId"
+        @click="handleChangePage(data.filmId)" >
+          <img :src="data.poster">
+          <div>
+            <div class="title">{{data.name}}</div>
+            <div class="content ">
+                <div :class="data.grade?'':'hidden'">
+                  观众评分: <span style="color:red">{{data.grade}}</span>
+                </div>
+                <div>
+                  {{data.nation}} | {{data.runtime}}分钟
+                </div>
+                <div class="actors">
+                  主演:{{data.actors | actorsFilter}}
+                </div>
               </div>
-              <div>
-                {{data.nation}} | {{data.runtime}}分钟
-              </div>
-              <div class="actors">
-                主演:{{data.actors | actorsFilter}}
-              </div>
-            </div>
-        </div>
-      </van-cell>
-    </van-list>
+          </div>
+          <span class="order">即将上映</span>
+        </van-cell>
+      </van-list>
     <!-- <ul>
       <li v-for="data in datalist" :key="data.filmId" @click="handleChangePage(data.filmId)">
       </li>
@@ -36,6 +37,7 @@
   </div>
 </template>
 <script>
+// import BetterScroll from 'better-scroll'
 // import axios from 'axios'
 import http from '@/util/http'
 import Vue from 'vue'
@@ -117,7 +119,6 @@ export default {
   .van-list{
     width: 100%;
     background-color: white;
-    padding-bottom: 3.0625rem;
     .van-cell{
       // clear: both;
       overflow: hidden;
@@ -143,6 +144,18 @@ export default {
           white-space: nowrap;
           width: 12.5rem;
         }
+      }
+        .order{
+        position: absolute;
+        right: 1rem;
+        top: 2rem;
+        font-size: 1rem;
+        padding: 0rem 0.5rem;
+        border-radius: 0.5rem;
+        // border: .0625rem solid red;
+        background-color: #aaa;
+        color: #fff;
+        opacity: 0.7;
       }
     }
     .van-list__error-text, .van-list__finished-text, .van-list__loading {
