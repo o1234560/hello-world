@@ -101,7 +101,7 @@ export default {
   methods: {
     onClickLeft () {
       // Toast('返回')
-      this.$router.back()
+      this.$router.push('/cinemas')
     },
     change (data) {
       // console.log(data)
@@ -136,34 +136,34 @@ export default {
       color: #000;
       text-align: center;
       .cinemaName{
-         font-size: 1.0625rem;
-         margin: .625rem auto;
+         font-size: 17px;
+         margin: 10px auto;
       }
       ul{
-         margin: 1rem auto;
-         padding-bottom: 1rem;
+         margin: 16px auto;
+         padding-bottom: 16px;
          display: flex;
          flex-direction: row;
          justify-content: center;
-         font-size: .5625rem;
+         font-size: 9px;
          li{
-            margin: 0 .3125rem;
-            padding: 0 .3125rem;
+            margin: 0 5px;
+            padding: 0 5px;
             color: #ffb232;
-            border: .0625rem solid #ffb232;
-            border-radius: .0625rem;
+            border: 1px solid #ffb232;
+            border-radius: 1px;
          }
       }
       .address{
          // color: #555;
-         font-size: .875rem;
-         margin: 1rem;
+         font-size: 14px;
+         margin: 16px;
          display: flex;
          flex-direction: row;
          justify-content: space-between;
          .van-icon{
-            font-size: 1.25rem;
-            margin-right: 0.5rem;
+            font-size: 20px;
+            margin-right: 8px;
             color: #555;
          }
       }
@@ -174,30 +174,32 @@ export default {
          flex: row;
          overflow:hidden;
          img{
-            height: 8.125rem;
-            width: 5.625rem;
-            margin-left: 1.25rem;
+            height: 130px;
+            width: 90px;
+            margin-left: 20px;
          }
       }
       .film-bg{
          width: 100%;
-         height: 10rem;
+         height: 160px;
          background-color: #ffb232;
          position: absolute;
       }
       .film-list{
          width: 100%;
-         padding-top: .9375rem;
+         padding-top: 15px;
          .films{
             width: 100%;
             .swiper-slide{
                transform: scale(0.8);
                position: relative;
+               padding: 0 auto;
+               text-align: center;
                .img{
-                  height: 8.125rem;
-                  width: 5.625rem;
+                  height: 130px;
+                  width: 90px;
                   position: relative;
-                  z-index: 999;
+                  z-index: 10;
                }
             }
             .swiper-slide-active{
@@ -207,51 +209,51 @@ export default {
          }
       }
       .film-info{
-         margin: .625rem auto;
+         margin: 10px auto;
          text-align: center;
          position: relative;
          .film-header{
-            margin-top: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 16px;
             span{
-               margin: 0 .75rem;
+               margin: 0 12px;
                color: #ffb232;
                i{
-                  font-size: .75rem;
+                  font-size: 12px;
                }
             }
          }
          .film-des{
             margin: 0 auto;
             width: 18.75rem;
-            height: 1.125rem;
+            height: 18px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-size: .8125rem;
+            font-size: 13px;
             color: #555;
          }
          .film-enter{
             color: #555;
             position: absolute;
-            right: 1rem;
-            bottom: .0625rem;
-            font-size: .75rem;
+            right: 16px;
+            bottom: 1px;
+            font-size: 12px;
          }
       }
       .date-list{
-         height: 3.0625rem;
+         height: 49px;
          text-align: center;
          vertical-align: center;
          display: flex;
          flex-direction: row;
-         padding: 0 1rem;
+         padding: 0 16px;
          div{
-            line-height: 3.0625rem;
-            margin: 0 1rem;
-            // width: 5rem;
-            border-bottom: .125rem solid #ffb232;
+            line-height: 49px;
+            margin: 0 16px;
+            // width: 80px;
+            border-bottom: 2px solid #ffb232;
          }
       }
    }

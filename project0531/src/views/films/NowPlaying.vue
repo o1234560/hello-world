@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     handleChangePage (id) {
-      console.log('changePage:', id)
+      // console.log('changePage:', id)
       // this.$router.push(`/detail/${id}`)//通过命名路由跳转
       this.$router.push({
         name: 'jack',
@@ -93,7 +93,7 @@ export default {
       })
     },
     onLoad () {
-      console.log('到底了')
+      // console.log('到底了')
       // onLoad先于mounted，路由返回时先触发onLoad，需要特殊处理
       if (this.datalist.length === this.total && this.total !== 0) {
         this.finished = true
@@ -122,38 +122,38 @@ export default {
     .van-cell{
       // clear: both;
       overflow: hidden;
-      padding: .9375rem;
-      line-height: 1.25rem;
+      padding: 15px;
+      line-height: 20px;
       position: relative;
       img{
-        width: 4.125rem;
+        width: 66px;
         float: left;
-        margin-right: .625rem;
+        margin-right: 10px;
       }
       .title{
-        font-size: 1rem;
+        font-size: 16px;
       }
       .content{
-        font-size: .8125rem;
+        font-size: 13px;
         color: gray;
         div{
-          margin-top: .1875rem;
+          margin-top: 3px;
         }
         .actors{
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          width: 12.5rem;
+          width: 200px;
         }
       }
       .order{
         position: absolute;
-        right: 1rem;
-        top: 2rem;
-        font-size: 1rem;
-        padding: 0rem 0.5rem;
-        border-radius: 0.5rem;
-        // border: .0625rem solid red;
+        right: 16px;
+        top: 32px;
+        font-size: 16px;
+        padding: 0px 8px;
+        border-radius: 8px;
+        // border: 1px solid red;
         background-color: red;
         color: #fff;
         opacity: 0.7;
@@ -161,8 +161,8 @@ export default {
     }
     .van-list__error-text, .van-list__finished-text, .van-list__loading {
     color: #969799;
-    font-size: .875rem;
-    line-height: 3.125rem;
+    font-size: 14px;
+    line-height: 50px;
     text-align: center;
 }
   }

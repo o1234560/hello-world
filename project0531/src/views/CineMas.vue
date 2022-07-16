@@ -45,7 +45,7 @@ export default {
     if (this.$store.state.cinemaList.length === 0) { // 分发给 异步action
       this.$store.dispatch('getCinemaData', this.$store.state.cityId)
         .then(res => {
-          console.log('cinemas 数据加载完成')
+          // console.log('cinemas 数据加载完成')
           // this.$nextTick(() => {
           //   new BetterScroll('.box', {
           //     scrollbar: {
@@ -55,7 +55,7 @@ export default {
           // })
         })
     } else {
-      console.log('cinemas 使用缓存')
+      // console.log('cinemas 使用缓存')
       // this.$nextTick(() => {
       //   new BetterScroll('.box', {
       //     scrollbar: {
@@ -93,7 +93,7 @@ export default {
       this.$router.push('/search')
     },
     handleChangePage (id) {
-      console.log(id)
+      // console.log(id)
       // console.log('changePage:', id)
       // this.$router.push(`/detail/${id}`)//通过命名路由跳转
       this.$router.push({
@@ -112,7 +112,7 @@ export default {
 #cinemas{
   height: 100%;
   .cinemabar{
-    height: 3.0625rem;
+    height: 49px;
     width: 100%;
     position: sticky;
     top: 0px;
@@ -121,13 +121,13 @@ export default {
 .box{
   width: 100%;
   height: 100%;//高度未作修正，需要修正滚动条位置, 使得BetterScroll滚动条不溢出
-  // padding-bottom: 3.0625rem;
+  // padding-bottom: 49px;
   overflow: hidden;
   background-color: #fff;
   position: relative;
   li{
-    padding: .9375rem;
-    font-size: .9375rem;
+    padding: 15px;
+    font-size: 15px;
     display: flex;
     justify-content:flex-end;
     .left{
@@ -136,8 +136,8 @@ export default {
       .address{
         max-width: 100%;
         color: gray;
-        font-size: .75rem;
-        margin-top: .3125rem;
+        font-size: 12px;
+        margin-top: 5px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -149,18 +149,18 @@ export default {
   }
 }
 .van-nav-bar{
-  line-height: 1.375rem;
+  line-height: 22px;
   .van-nav-bar__content {
-    height: 3.0625rem;
+    height: 49px;
     .van-nav-bar__left, .van-nav-bar__right{
-      height: 3.0625rem;
-      font-size: .875rem;
+      height: 49px;
+      font-size: 14px;
       .van-icon{
-        font-size: 1.25rem;
+        font-size: 20px;
       }
     }
     .van-nav-bar__title{
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 }

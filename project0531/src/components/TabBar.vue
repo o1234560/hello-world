@@ -42,22 +42,22 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3.0625rem;
+    height: 49px;
     background: white;
     z-index: 100;
     ul{
       display: flex;
       li{
         flex: 1;
-        line-height: 1.5625rem;
+        line-height: 25px;
         text-align: center;
         display: flex;
         flex-direction: column;
         i{
-          font-size: 1.25rem;
+          font-size: 20px;
         };
         span{
-          font-size: 1rem;
+          font-size: 16px;
         }
       }
     }

@@ -2,8 +2,9 @@
   <div id="city">
   <van-search
     v-model="value"
+    show-action
+    @cancel="handleCancel()"
     placeholder="请输入城市名"
-    background="#f00"
   />
 
   <!-- 热门城市 -->
@@ -65,7 +66,7 @@ export default {
       // 0、
       this.citys = res.data.data.cities
       // this.citys = this.citys.map(item=>item.name)
-      console.log(this.citys)
+      // console.log(this.citys)
       // 1、 数据分组
       this.renderCity(res.data.data.cities)
       // 2、 数据渲染
@@ -115,6 +116,9 @@ export default {
       this.$store.commit('changeCityName', item.name) // mutation 监控, 同步
       this.$store.commit('changeCityId', item.cityId) // mutation 监控
       this.$router.back()
+    },
+    handleCancel () {
+      this.$router.back()
     }
   },
   computed: {
@@ -122,13 +126,13 @@ export default {
       return this.cityList.map(item => item.type)
     },
     computedList02 () {
-      console.log('查找:', this.value)
+      // console.log('查找:', this.value)
       // const ll=this.citys.filter(item => item.include(this.value))
       // console.log(ll)
       if (this.value.length !== 0) {
         // eslint-disable-next-line
         this.show = true
-        console.log(this.citys.filter(item => item.name.includes(this.value)))
+        // console.log(this.citys.filter(item => item.name.includes(this.value)))
       } else {
         // eslint-disable-next-line
         this.show = false
@@ -141,58 +145,66 @@ export default {
 
 <style lang="scss">
 .van-toast{
-  min-width: 1.25rem;
+  min-width: 20px;
 }
 
 .van-search{
  position: relative;
+//  background-color: #f00;
+//  border-bottom: 1px solid #ddd;
+ .van-search__content.van-search__content--square{
+  border-radius: 15px;
+ }
+ .van-search__action{
+  color: #323233;
+ }
 }
 
 .hot{
   background-color: #fff;
-  padding: 1rem 0rem;
+  padding: 16px 0px;
   div{
     font-size: 14px;
-    margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-left: 8px;
+    margin-bottom: 8px;
     color: #aaa;
   }
   li{
     display: inline-block;
     button{
-      font-size: .875rem;
-      margin: .625rem 1rem;
-      padding: 0.5rem 2rem;
+      font-size: 14px;
+      margin: 10px 16px;
+      padding: 8px 32px;
       background-color: #f7f8fa;
       border: 0px;
-      border-radius: 0.5rem;
+      border-radius: 8px;
     }
   }
 }
 
 .van-index-bar{
   display: block;
-  font-size: 1rem;
+  font-size: 16px;
   .van-index-bar__index {
-    padding: 0 .5rem 0 1rem;
-    font-size: .875rem;
-    line-height: 1rem;
+    padding: 0 8px 0 16px;
+    font-size: 14px;
+    line-height: 16px;
     // color: #aaa;
     opacity: 0.5;
   };
   .van-index-anchor {
     background-color: #f7f8fa;
     color: #aaa;
-    padding: 0 1rem;
-    font-size: .875rem;
-    line-height: 2rem;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
   }
   .van-cell{
-    padding: .625rem 1rem;
+    padding: 10px 16px;
     overflow: hidden;
     color: #323233;
-    font-size: .875rem;
-    line-height: 1.5rem;
+    font-size: 14px;
+    line-height: 24px;
   }
 }
 

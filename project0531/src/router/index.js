@@ -96,10 +96,10 @@ router.beforeEach((to, from, next) => {
   // console.log(to)
   // 设置 TabBar 显示与否
   if (to.meta.isTabbarHide) {
-    console.log('TabBar hide')
+    // console.log('TabBar hide')
     store.commit('hide')
   } else {
-    console.log('TabBar show')
+    // console.log('TabBar show')
     store.commit('show')
   }
   next() // next()表示允许跳转的路由，此时任何yem表示都可以

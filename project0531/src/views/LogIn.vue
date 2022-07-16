@@ -18,7 +18,7 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"
       />
-      <div style="margin: 1rem;">
+      <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">提交</van-button>
       </div>
     </van-form>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     onSubmit (values) {
-      console.log('submit', values)
+      // console.log('submit', values)
       Toast('登录成功')
       setTimeout(() => {
         this.$store.commit('setUsername', this.username)
@@ -56,7 +56,7 @@ export default {
   text-align: center;
   overflow: hidden;
   h1{
-    margin: 1.25rem;
+    margin: 20px;
   }
 }
 .van-form{
@@ -66,11 +66,11 @@ export default {
 }
 .van-cell, .van-field, .van-field--error{
   // width: 100;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: 16px;
+  font-size: 20px;
 }
 .van-button, .van-button--info, .van-button--normal, .van-button--block, .van-button--round{
   // width: 80%;
-  font-size: 1.25rem;
+  font-size: 20px;
 }
 </style>

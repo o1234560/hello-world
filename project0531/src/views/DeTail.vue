@@ -10,7 +10,7 @@
         <div class="detail-text">{{filmInfo.category}}</div>
         <div class="detail-text">{{filmInfo.premiereAt | dateFilter}}上映</div>
         <div class="detail-text">{{filmInfo.nation}} | {{filmInfo.runtime}}分钟</div>
-        <div class="detail-text" style="line-height: 1.25rem; " :class="isHidden?'hidden':''">{{filmInfo.synopsis}}</div>
+        <div class="detail-text" style="line-height: 20px; " :class="isHidden?'hidden':''">{{filmInfo.synopsis}}</div>
         <div style="text-align: center;">
           <i class="iconfont" @click="isHidden=!isHidden" :class="isHidden?'icon-arrow-down-bold':'icon-arrow-up-bold'"></i>
         </div>
@@ -62,7 +62,7 @@ Vue.directive('scroll', {
     // console.log(el, binding)
     el.style.display = 'none'
     window.onscroll = () => {
-      console.log('scroll', binding.value)
+      // console.log('scroll', binding.value)
       if ((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
         el.style.display = 'block'
       } else {
@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     handleImagePreview (index) {
-      console.log(index)
+      // console.log(index)
       ImagePreview({
         images: this.photoList,
         startPosition: index,
@@ -141,27 +141,27 @@ export default {
     background-size: cover;
   }
   .content{
-    padding: .9375rem;
-    border-bottom: .625rem solid #eee;
+    padding: 15px;
+    border-bottom: 10px solid #eee;
     background-color: #fff;
     .title{
-      font-size: 1.25rem;
+      font-size: 20px;
     }
     .detail-text{
-      font-size: .8125rem;
+      font-size: 13px;
       color: gray;
-      margin-top: .625rem;
+      margin-top: 10px;
     }
   }
   .actorlist{
     text-align: center;
-    font-size: .8125rem;
-    line-height: 1.25rem;
+    font-size: 13px;
+    line-height: 20px;
     color: gray;
-    margin-top: 1.25rem;
-    // border-top: 1rem solid #eee;
+    margin-top: 20px;
+    // border-top: 16px solid #eee;
     .actorposter{
-      // width: 5.3125rem;
+      // width: 85px;
       height: 5.3125rem;
       background-position: center;
       background-size: cover;
@@ -169,10 +169,10 @@ export default {
   }
   .photolist{
     text-align: center;
-    margin-top: 1.25rem;
-    // border-top: 1rem solid #eee;
+    margin-top: 20px;
+    // border-top: 16px solid #eee;
     .photoposter{
-      // width: 9.375rem;
+      // width: 150px;
       height: 6.25rem;
       img{
         width: 100%;
@@ -181,7 +181,7 @@ export default {
   }
   .hidden{
     overflow: hidden;
-    height: 2.4rem;
+    height: 38.4px;
   }
 }
 </style>

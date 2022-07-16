@@ -11,7 +11,8 @@
     <!-- {{value}} -->
     <div class="box">
       <ul v-if="value">
-        <li v-for="data in computedList" :key="data.cinemaId">
+        <li v-for="data in computedList" :key="data.cinemaId"
+        @click="handleChangePage(data.cinemaId)">
           <div class="left">
             <div>{{data.name}}</div>
             <div class="address">{{data.address}}</div>
@@ -39,6 +40,14 @@ export default {
     },
     onCancel () {
       this.$router.back()
+    },
+    handleChangePage (id) {
+      this.$router.push({
+        name: 'tom',
+        params: {
+          id
+        }
+      })
     }
   },
   computed: {
@@ -52,7 +61,7 @@ export default {
     if (this.$store.state.cinemaList.length === 0) {
       this.$store.dispatch('getCinemaData', this.$store.state.cityId)
     } else {
-      console.log('search 使用缓存')
+      // console.log('search 使用缓存')
     }
   }
 }
@@ -60,44 +69,44 @@ export default {
 
 <style lang="scss">
 .van-search {
-    padding: .875rem .75rem;
+    padding: 14px 12px;
     .van-search__content{
-      padding-left: .75rem;
-      border-radius: .125rem;
+      padding-left: 12px;
+      border-radius: 2px;
 
     }
 }
   .van-cell{
-    font-size: .875rem;
-    line-height: 1.5rem;
-    padding: .625rem 0rem;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 10px 0px;
   }
   .van-search__action {
-    padding: 0 .5rem;
-    font-size: .875rem;
-    line-height: 2.125rem;
+    padding: 0 8px;
+    font-size: 14px;
+    line-height: 34px;
   }
   .van-field__left-icon {
-    margin-right: .25rem;
+    margin-right: 4px;
 }
 .van-field__left-icon .van-icon, .van-field__right-icon .van-icon {
     display: block;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: inherit;
 }
 .van-icon-clear, .van-field-clear {
-  font-size: 1rem;
+  font-size: 16px;
 }
 //组件元素大小控制不了时，关闭scoped，然后自己的设置才能起作用。
 //组件库元素css需要在外边，不能在自己设置的css的里面，在里面不起作用。
 .box{
-  height: 46.25rem;
+  min-height: 740px;
   overflow: hidden;
   background-color: #fff;
   position: relative; //修正滚动条位置, 使得BetterScroll滚动条不溢出
   li{
-    padding: .9375rem;
-    font-size: .9375rem;
+    padding: 15px;
+    font-size: 15px;
     display: flex;
     justify-content: space-between;
     .left{
@@ -106,8 +115,8 @@ export default {
       .address{
         max-width: 14rem;
         color: gray;
-        font-size: .75rem;
-        margin-top: .3125rem;
+        font-size: 12px;
+        margin-top: 5px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;

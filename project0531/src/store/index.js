@@ -59,7 +59,7 @@ export default new Vuex.Store({
           'X-Host': 'mall.film-ticket.cinema.list'
         }
       }).then(res => {
-        console.log(res.data.data.cinemas)
+        // console.log(res.data.data.cinemas)
         store.commit('changeCinemaData', res.data.data.cinemas)
       })
     }

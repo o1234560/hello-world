@@ -46,7 +46,7 @@ ul,li{
   //  background-color: #eee;
   section{
     height: 100%;
-    padding-bottom: 3.0625rem;
+    padding-bottom: 49px;
     // background-color: #eee;
   }
 }

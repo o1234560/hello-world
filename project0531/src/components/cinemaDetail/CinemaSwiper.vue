@@ -31,11 +31,11 @@ export default {
       centeredSlides: true,
       speed: 1000,
       on: {
-        slideChangeTransitionEnd: function(){
+        slideChangeTransitionEnd: function () {
           // alert(this.activeIndex); // 切换结束时，告诉我现在是第几个slide
-          
-      },
-  },
+
+        }
+      }
     })
   }
 }

@@ -38,7 +38,7 @@ export default {
 <style lang="scss" scoped>
  .swiper{
    width: 100%;
-   height: 12.5rem;
+   height: 200px;
    img{
     //  margin-top: -10%;
      width: 100%;
@@ -46,6 +46,6 @@ export default {
  }
   .sticky{
     position: sticky;
-    top: 0rem;
+    top: 0px;
   }
 </style>

@@ -37,52 +37,52 @@ export default {
   flex-direction: column;
   .header{
     background-color: orange;
-    height: 12.5rem;
-    line-height: 12.5rem;
+    height: 200px;
+    line-height: 200px;
     display: flex;
     color: white;
-    // padding: 3.125rem 0;
+    // padding: 50px 0;
     i{
-      width: 3.75rem;
-      margin-left: 3.25rem;
-      font-size:3.75rem;
+      width: 60px;
+      margin-left: 52px;
+      font-size:60px;
     }
     li{
       flex:1;
-      font-size: 1.25rem;
+      font-size: 20px;
     }
   }
   .nav{
     display: flex;
     flex-direction: row;
     background-color: white;
-    height: 3.125rem;
-    line-height: 3.125rem;
-    font-size: 1rem;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
     div{
       flex:1;
       text-align: center;
     }
   }
   ul{
-    border-top: 1rem solid #eee;
+    border-top: 16px solid #eee;
     display: flex;
     flex-direction: column;
     background-color: white;
-    // height: 3.125rem;
-    // line-height: 3.125rem;
-    font-size: 1rem;
+    // height: 50px;
+    // line-height: 50px;
+    font-size: 16px;
     li{
       // background-color: white;
-      padding-left: 2rem;
-      height:3rem;
-      line-height:3rem;
-      // margin-bottom: 1rem;
-      border-bottom: .0625rem solid #f0f0f0;
+      padding-left: 32px;
+      height:48px;
+      line-height:48px;
+      // margin-bottom: 16px;
+      border-bottom: 1px solid #f0f0f0;
     }
   }
   footer{
-    // margin: 6.25rem;
+    // margin: 100px;
     text-align: center;
     color: #aaa;
   }

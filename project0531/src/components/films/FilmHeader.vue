@@ -16,22 +16,22 @@
 <style lang="scss" scoped>
 .myActive{
   color: red;
-  border-bottom: .125rem solid red;
+  border-bottom: 2px solid red;
 }
 ul{
   background: white;
   display: flex;
   z-index: 100;
-  height: 3.0625rem;
-  line-height: 3.0625rem;
+  height: 49px;
+  line-height: 49px;
   // border-bottom: 2px solid #eee;
   // box-shadow: 0px 0px 5px #efefef;
   li{
     flex: 1;
     text-align: center;
     span{
-      font-size: 1rem;
-      padding-bottom: .625rem;
+      font-size: 16px;
+      padding-bottom: 10px;
     };
   }
 }

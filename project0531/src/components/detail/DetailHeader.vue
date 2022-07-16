@@ -21,13 +21,14 @@ export default {
    top: 0;
    left: 0;
    width: 100%;
-   height: 2.75rem;
-   line-height: 2.75rem;
+   height: 44px;
+   line-height: 44px;
    background-color: white;
    text-align: center;
+   z-index: 999;
    i{
      position: fixed;
-     left: .625rem;
+     left: 10px;
    }
  }
 </style>
