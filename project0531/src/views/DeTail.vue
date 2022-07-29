@@ -182,6 +182,11 @@ export default {
   .hidden{
     overflow: hidden;
     height: 38.4px;
+    // 多行省略
+    // text-overflow: ellipsis;
+    // display: -webkit-box;
+    // -webkit-line-clamp: 2; // 显示行数
+    // -webkit-box-orient: vertical;
   }
 }
 </style>

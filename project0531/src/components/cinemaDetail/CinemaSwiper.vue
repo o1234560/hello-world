@@ -30,6 +30,7 @@ export default {
       slideToClickedSlide: true,
       centeredSlides: true,
       speed: 1000,
+      // allowTouchMove: false, // 禁止滑动
       on: {
         slideChangeTransitionEnd: function () {
           // alert(this.activeIndex); // 切换结束时，告诉我现在是第几个slide

@@ -8,3 +8,7 @@
 2022/06/04 16:09:30 [error] 8572#10604: *10 CreateFile() "D:\website\2022\nginx-1.21.6/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
 2022/07/15 11:02:29 [notice] 2096#8840: signal process started
 2022/07/15 11:13:24 [notice] 10704#8616: signal process started
+2022/07/20 17:26:54 [notice] 8732#3360: signal process started
+2022/07/26 15:10:57 [notice] 15716#5512: signal process started
+2022/07/26 17:01:04 [error] 12468#8920: *4 CreateFile() "D:\website\2022\nginx-1.21.6/dist/films/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /films/favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/films/nowplay"
+2022/07/26 17:01:06 [error] 12468#8920: *4 CreateFile() "D:\website\2022\nginx-1.21.6/dist/cinemadetail/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /cinemadetail/favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/cinemadetail/9716"

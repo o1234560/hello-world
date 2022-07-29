@@ -1,6 +1,9 @@
 <template>
   <div id="search">
     <!-- search -->
+    <!-- 其中，Vant 是一个面向移动端的组件库，因此默认只适配了移动端设备，这意味着组件只监听了移动端的 touch 事件，没有监听桌面端的 mouse 事件。 -->
+    <!-- 桌面端 clear 不起作用 -->
+    <!-- 如果你需要在桌面端使用 Vant，可以引入我们提供的 @vant/touch-emulator，这个库会在桌面端自动将 mouse 事件转换成对应的 touch 事件，使得组件能够在桌面端使用。 -->
     <van-search
       v-model="value"
       show-action

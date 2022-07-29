@@ -10,9 +10,11 @@
   <!-- 热门城市 -->
   <ul class="hot" v-show="!show">
     <div>热门城市</div>
-    <li v-for="data in citys" :key="data.cityId">
-      <button v-if="data.isHot===1" @click="handleClick(data)">{{data.name}}</button>
-    </li>
+    <ul class="hot-city">
+      <li v-for="data in citys" :key="data.cityId">
+        <button v-if="data.isHot===1" @click="handleClick(data)">{{data.name}}</button>
+      </li>
+    </ul> 
   </ul>
 
   <!-- city 列表 -->
@@ -169,17 +171,21 @@ export default {
     margin-bottom: 8px;
     color: #aaa;
   }
-  li{
-    display: inline-block;
-    button{
-      font-size: 14px;
-      margin: 10px 16px;
-      padding: 8px 32px;
-      background-color: #f7f8fa;
-      border: 0px;
-      border-radius: 8px;
+  .hot-city{
+    padding-left: 16px;
+    li{
+      display: inline-block;
+      button{
+        font-size: 14px;
+        margin: 8px 8px;
+        padding: 8px 16px;
+        background-color: #f7f8fa;
+        border: 0px;
+        border-radius: 8px;
+      }
     }
   }
+  
 }
 
 .van-index-bar{

@@ -18,14 +18,18 @@
             <img v-for="data in films" :key="data.filmId" :src="data.poster" />
          </ul> -->
          <!-- 背景 -->
-         <div class="film-bg"></div>
+          <!-- <div class="film-bg"  ref="bg"></div> -->
+         <div class="bg-bg">
+            <div class="film-bg"  ref="bg"></div>
+            <div class="bg-arrow"></div>
+         </div>
          <!-- 轮播 -->
          <div class="film-list">
             <cinema-swiper class="films" :slideNum="4" name="films">
-               <cinema-swiper-item class="swiper-slide" v-for="data in films"
+               <cinema-swiper-item class="swiper-slide" v-for="(data, index) in films"
                :key="data.filmId">
                   <img :src="data.poster" class="img"
-                  @click="change(data)"
+                  @load="imageLoad(data, index)" @click="imageChange(data)"
                   />
                </cinema-swiper-item>
             </cinema-swiper>
@@ -36,13 +40,17 @@
             <div class="film-des">
                {{info.category}}
                | {{info.runtime}}分钟
-               <span v-for="actor in info.actors" :key="actor.name">| {{actor.name}} </span>
+               <span v-for="(actor, index) in info.actors" :key="index">| {{actor.name}} </span>
             </div>
             <van-icon class="film-enter" name="arrow" @click="handlePage()"/>
          </div>
          <!-- 时间表 -->
          <div class="date-list" v-if="info">
-            <div v-for="date in info.showDate" :key="date">{{date | dateFilter}}</div>
+            <div v-for="(date, index) in info.showDate" :key="date"
+            :class="{'active' : index === active}" @click="active=index"
+            >
+            {{date | dateFilter}}
+            </div>
          </div>
          <div class="schedule-list"></div>
       </div>
@@ -64,7 +72,8 @@ export default {
     return {
       cinema: null,
       films: null,
-      info: null
+      info: null,
+      active: 0
     }
   },
   components: {
@@ -103,12 +112,25 @@ export default {
       // Toast('返回')
       this.$router.push('/cinemas')
     },
-    change (data) {
+    imageLoad (data, index) {
+      // console.log(data)
+      if (index === 0) {
+        this.info = data
+        this.$refs.bg.style.background = 'url(' + data.poster + ')' + 'center / cover no-repeat'
+        this.$refs.bg.style.filter = 'blur(10px)'
+        // this.$refs.bg.style.tansform = 'scale(5)'
+      }
+    },
+    imageChange (data) {
       // console.log(data)
       this.info = data
       // Toast('滑动了！')
       // this.infoshow = true
       // console.log(this.info.name)
+      this.$refs.bg.style.background = 'url(' + data.poster + ')' + 'center / cover no-repeat'
+      this.$refs.bg.style.filter = 'blur(10px)'
+      // this.$refs.bg.style.tansform = 'scale(5)'
+      // console.log(this.info.actors)
     },
     handlePage () {
       const id = this.info.filmId
@@ -179,18 +201,43 @@ export default {
             margin-left: 20px;
          }
       }
-      .film-bg{
+      // .film-bg{
+      //    width: 100%;
+      //    height: 160px;
+      //    overflow: hidden;
+      //    background-color: #ffb232;
+      //    position: absolute;
+      // }
+      .bg-bg{
          width: 100%;
          height: 160px;
-         background-color: #ffb232;
+         overflow: hidden;
          position: absolute;
+         .film-bg{
+            width: 100%;
+            height: 160px;
+            background-color: #ffb232;
+            position: absolute;
+         }
+         .bg-arrow{
+            position: absolute;
+            bottom: -2px;
+            left: calc(50% - 10px);
+            border: 10px solid;
+            border-color: transparent transparent white;
+         }
       }
       .film-list{
          width: 100%;
+         // background-color: #555;
          padding-top: 15px;
+         padding-bottom: 15px;
+         position: relative;
+         z-index: 0;
          .films{
             width: 100%;
             .swiper-slide{
+               width: 100%;
                transform: scale(0.8);
                position: relative;
                padding: 0 auto;
@@ -205,7 +252,6 @@ export default {
             .swiper-slide-active{
                transform: scale(1);
             }
-
          }
       }
       .film-info{
@@ -243,20 +289,36 @@ export default {
          }
       }
       .date-list{
-         height: 49px;
+         // height: 49px;
          text-align: center;
          vertical-align: center;
          display: flex;
          flex-direction: row;
-         padding: 0 16px;
+         // padding: 0 16px;
+         overflow-x: auto;
          div{
             line-height: 49px;
-            margin: 0 16px;
-            // width: 80px;
-            border-bottom: 2px solid #ffb232;
+            margin: 0 8px;
+            width: 80px;
+            // border-bottom: 2px solid #ffb232;
+            // 控制flex子项的大小，使得子项不被压缩。
+            flex-basis: 80px;
+            flex-shrink: 0;
+
          }
       }
+      // 隐藏滚动条
+      .date-list{
+         scrollbar-width: none;
+         -ms-overflow-style: none;
+      }
+      .date-list::-webkit-scrollbar{
+         display: none;
+      }
    }
+}
+.active{
+   border-bottom: 2px solid #ffb232;
 }
 
 </style>
