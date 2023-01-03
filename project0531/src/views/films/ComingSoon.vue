@@ -70,7 +70,7 @@ export default {
     //   this.datalist = res.data.data.films
     // })
     http({
-      url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=2&k=8803514`,
+      url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=2&k=${Math.floor(Math.random() * 10000000)}`,
       headers: {
         'X-Host': 'mall.film-ticket.film.list'
       }

@@ -12,3 +12,11 @@
 2022/07/26 15:10:57 [notice] 15716#5512: signal process started
 2022/07/26 17:01:04 [error] 12468#8920: *4 CreateFile() "D:\website\2022\nginx-1.21.6/dist/films/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /films/favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/films/nowplay"
 2022/07/26 17:01:06 [error] 12468#8920: *4 CreateFile() "D:\website\2022\nginx-1.21.6/dist/cinemadetail/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /cinemadetail/favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/cinemadetail/9716"
+2023/01/03 15:42:42 [emerg] 10544#14576: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:49:06 [emerg] 10868#8184: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:49:08 [emerg] 8612#18008: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:53:09 [emerg] 9672#18224: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:53:41 [emerg] 8808#12724: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:54:55 [emerg] 10684#13460: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:55:03 [emerg] 8144#5068: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)
+2023/01/03 15:57:03 [emerg] 1804#12324: CreateFile() "D:\website\项目实战\Vue 2022\nginx-1.21.6/conf/nginx.conf" failed (3: The system cannot find the path specified)

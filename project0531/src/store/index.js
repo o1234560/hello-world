@@ -54,7 +54,7 @@ export default new Vuex.Store({
     getCinemaData (store, cityId) {
       // console.log('getCinemaData')
       return http({ // 返回 promise 对象
-        url: `/gateway?cityId=${cityId}&ticketFlag=1&k=8708327`,
+        url: `/gateway?cityId=${cityId}&ticketFlag=1&k=${Math.floor(Math.random() * 10000000)}`,
         headers: {
           'X-Host': 'mall.film-ticket.cinema.list'
         }

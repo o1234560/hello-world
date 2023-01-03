@@ -71,7 +71,9 @@ export default {
     //   this.datalist = res.data.data.films
     // })
     http({
-      url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=1&k=9288020`,
+      // url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=1&k=9288020`,
+      // 参数k的作用：k值变化，每次请求不同。使用 random 是为了频繁请求时，被“卖座电影”拦截。
+      url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=1&k=${Math.floor(Math.random() * 10000000)}`,
       headers: {
         'X-Host': 'mall.film-ticket.film.list'
       }
