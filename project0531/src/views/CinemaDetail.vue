@@ -13,12 +13,7 @@
          <div class="address"><span><van-icon name="location-o" />{{cinema.address}}</span><van-icon name="phone-o" /></div>
       </div>
       <div class="film-wrap">
-         <!-- <ul>
-            <li v-for="data in films" :key="data.filmId">{{data.poster}}</li>
-            <img v-for="data in films" :key="data.filmId" :src="data.poster" />
-         </ul> -->
          <!-- 背景 -->
-          <!-- <div class="film-bg"  ref="bg"></div> -->
          <div class="bg-bg">
             <div class="film-bg"  ref="bg"></div>
             <div class="bg-arrow"></div>
@@ -28,8 +23,12 @@
             <cinema-swiper class="films" :slideNum="4" name="films">
                <cinema-swiper-item class="swiper-slide" v-for="(data, index) in films"
                :key="data.filmId">
-                  <img :src="data.poster" class="img"
-                  @load="imageLoad(data, index)" @click="imageChange(data)"
+                  <img
+                  :src="data.poster"
+                  class="img"
+                  @load="filmLoad(data, index)"
+                  @click="filmHandle(data)"
+                  :ref="data.filmId"
                   />
                </cinema-swiper-item>
             </cinema-swiper>
@@ -45,14 +44,23 @@
             <van-icon class="film-enter" name="arrow" @click="handlePage()"/>
          </div>
          <!-- 时间表 -->
-         <div class="date-list" v-if="info">
-            <div v-for="(date, index) in info.showDate" :key="date"
-            :class="{'active' : index === active}" @click="active=index"
-            >
-            {{date | dateFilter}}
+         <div class="film-showDate" v-if="info">
+            <div class="film-showDate-head">
+               <li  v-for="item in info.showDate" :key="item.scheduleId" @click="getSchedules(item)">
+               {{item | dateFilter}}
+            </li>
+            </div>
+            <div class="film-showDate-content">
+               <li v-for="item in schedule" :key="item.scheduleId">
+                  <div>{{item.showAt | timeFilter}}-{{item.endAt | timeFilter}}</div>
+                  <div>
+                     {{item.filmLanguage}}
+                     {{item.imagery}}
+                     {{item.hallName}}
+                  </div>
+               </li>
             </div>
          </div>
-         <div class="schedule-list"></div>
       </div>
   </div>
 </template>
@@ -65,15 +73,19 @@ import Vue from 'vue'
 import CinemaSwiper from '@/components/cinemaDetail/CinemaSwiper'
 import CinemaSwiperItem from '@/components/cinemaDetail/CinemaSwiperItem'
 Vue.filter('dateFilter', (date) => {
-  return moment(date * 1000).format('MM月DD日')
+  return moment(date * 1000).format('M月D日')
+})
+Vue.filter('timeFilter', (date) => {
+  return moment(date * 1000).format('hh:mm')
 })
 export default {
   data () {
     return {
-      cinema: null,
-      films: null,
-      info: null,
-      active: 0
+      cinema: {},
+      films: {},
+      info: {},
+      active: 0,
+      schedule: []
     }
   },
   components: {
@@ -112,18 +124,16 @@ export default {
       // Toast('返回')
       this.$router.push('/cinemas')
     },
-    imageLoad (data, index) {
+    filmLoad (data, index) {
       // console.log(data)
       if (index === 0) {
-        this.info = data
-        this.$refs.bg.style.background = 'url(' + data.poster + ')' + 'center / cover no-repeat'
-        this.$refs.bg.style.filter = 'blur(10px)'
-        // this.$refs.bg.style.tansform = 'scale(5)'
+        this.filmHandle(data)
       }
     },
-    imageChange (data) {
+    filmHandle (data) {
       // console.log(data)
       this.info = data
+      this.getSchedules(this.info.showDate[0])
       // Toast('滑动了！')
       // this.infoshow = true
       // console.log(this.info.name)
@@ -131,6 +141,20 @@ export default {
       this.$refs.bg.style.filter = 'blur(10px)'
       // this.$refs.bg.style.tansform = 'scale(5)'
       // console.log(this.info.actors)
+      // console.log(data.filmId)
+    },
+    getSchedules (date) {
+      // console.log(date)
+      http({
+        url: `/gateway/?filmId=${this.info.filmId}&cinemaId=${this.$route.params.id}&date=${date}&k=2499546`,
+        // url: `/gateway/?filmId=6165&cinemaId=2800&date=1672675200&k=7901726`,
+        headers: {
+          'X-Host': 'mall.film-ticket.schedule.list'
+        }
+      }).then(res => { 
+        console.log(res.data.data.schedules)
+        this.schedule = res.data.data.schedules
+      })
     },
     handlePage () {
       const id = this.info.filmId
@@ -288,32 +312,20 @@ export default {
             font-size: 12px;
          }
       }
-      .date-list{
-         // height: 49px;
-         text-align: center;
-         vertical-align: center;
-         display: flex;
-         flex-direction: row;
-         // padding: 0 16px;
-         overflow-x: auto;
-         div{
-            line-height: 49px;
-            margin: 0 8px;
-            width: 80px;
-            // border-bottom: 2px solid #ffb232;
-            // 控制flex子项的大小，使得子项不被压缩。
-            flex-basis: 80px;
-            flex-shrink: 0;
+      .film-showDate{
 
+         .film-showDate-head{
+            overflow: auto;
+         width: 100%;
+         height: 30px;
+         white-space: nowrap;
+          li{
+            display: inline-block;
+            // width: 30%;
+            margin: 0 5px;
          }
-      }
-      // 隐藏滚动条
-      .date-list{
-         scrollbar-width: none;
-         -ms-overflow-style: none;
-      }
-      .date-list::-webkit-scrollbar{
-         display: none;
+         }
+
       }
    }
 }

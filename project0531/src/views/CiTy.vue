@@ -14,7 +14,7 @@
       <li v-for="data in citys" :key="data.cityId">
         <button v-if="data.isHot===1" @click="handleClick(data)">{{data.name}}</button>
       </li>
-    </ul> 
+    </ul>
   </ul>
 
   <!-- city 列表 -->
@@ -185,7 +185,7 @@ export default {
       }
     }
   }
-  
+
 }
 
 .van-index-bar{
