@@ -11,6 +11,7 @@ module.exports = defineConfig({
       }
     }
   },
+  // lintOnSave: false, 关闭保存时检查
   lintOnSave: true,
   // 设置打包时的路径问题
   publicPath: './'

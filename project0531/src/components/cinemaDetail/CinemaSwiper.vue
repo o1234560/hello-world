@@ -12,6 +12,7 @@
 <script>
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
+
 export default {
   props: {
     slideNum: {
@@ -29,14 +30,13 @@ export default {
       // spaceBetween: 40, // 不好用。不要和slideToClickedSlide同时使用，不要slidesPerView同时使用，和swiper-slide的间距 和 swiper-silde的宽度 的 15% 一样,
       slideToClickedSlide: true,
       centeredSlides: true,
-      speed: 1000,
+      speed: 1000
       // allowTouchMove: false, // 禁止滑动
-      on: {
-        slideChangeTransitionEnd: function () {
-          // alert(this.activeIndex); // 切换结束时，告诉我现在是第几个slide
-
-        }
-      }
+      // on: {
+      //   slideChangeTransitionEnd: function () {
+      //     alert(this.activeIndex) // 切换结束时，告诉我现在是第几个slide
+      //   }
+      // }
     })
   }
 }

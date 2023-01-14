@@ -2,7 +2,7 @@
   <div id="app">
     <!-- hello -->
     <tab-bar v-show="$store.state.isTabBarShow"></tab-bar>
-    <section>
+    <section :style="$store.state.isTabBarShow ? 'padding-bottom: 49px;': ''">
       <!-- 路由容器 -->
       <router-view></router-view>
     </section>
@@ -46,7 +46,7 @@ ul,li{
   //  background-color: #eee;
   section{
     height: 100%;
-    padding-bottom: 49px;
+    // padding-bottom: 0px;
     // background-color: #eee;
   }
 }
