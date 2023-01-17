@@ -103,7 +103,7 @@ export default {
 //组件元素大小控制不了时，关闭scoped，然后自己的设置才能起作用。
 //组件库元素css需要在外边，不能在自己设置的css的里面，在里面不起作用。
 .box{
-  min-height: 740px;
+  min-height: calc(100vh - 62px);
   overflow: hidden;
   background-color: #fff;
   position: relative; //修正滚动条位置, 使得BetterScroll滚动条不溢出

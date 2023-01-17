@@ -45,7 +45,7 @@ ul,li{
    width: 100%;
   //  background-color: #eee;
   section{
-    height: 100%;
+    // height: 100%;
     // padding-bottom: 0px;
     // background-color: #eee;
   }

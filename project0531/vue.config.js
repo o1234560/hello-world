@@ -5,6 +5,7 @@ module.exports = defineConfig({
   configureWebpack: { // configWebpack
     resolve: {
       alias: { // alias翻译为，别名。
+        src: '@/',
         assets: '@/assets',
         components: '@/components',
         views: '@/views'

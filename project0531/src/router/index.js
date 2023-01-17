@@ -49,12 +49,18 @@ const routes = [{
 },
 {
   path: '/cinemadetail',
-  component: CinemaDetail
+  component: CinemaDetail,
+  meta: {
+    isTabbarHide: true
+  }
 },
 {
   name: 'tom',
   path: '/cinemadetail/:id',
-  component: CinemaDetail
+  component: CinemaDetail,
+  meta: {
+    isTabbarHide: true
+  }
 },
 {
   path: '/city',

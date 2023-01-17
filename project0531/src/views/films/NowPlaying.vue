@@ -102,17 +102,22 @@ export default {
         return
       }
       this.current++
-      http({
-        url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=${this.current}&pageSize=10&type=1&k=9288020`,
-        headers: {
-          'X-Host': 'mall.film-ticket.film.list'
-        }
-      }).then(res => {
+      let timer = null
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(
+        http({
+          url: `/gateway?cityId=${this.$store.state.cityId}&pageNum=${this.current}&pageSize=10&type=1&k=9288020`,
+          headers: {
+            'X-Host': 'mall.film-ticket.film.list'
+          }
+        }).then(res => {
         // console.log(res.data.data.films)
-        this.datalist = [...this.datalist, ...res.data.data.films]
-        // loading主动设置成false
-        this.loading = false
-      })
+          this.datalist = [...this.datalist, ...res.data.data.films]
+          // loading主动设置成false
+          this.loading = false
+        }), 1000)
     }
   }
 }
