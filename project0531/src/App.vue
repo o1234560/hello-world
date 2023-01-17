@@ -2,9 +2,11 @@
   <div id="app">
     <!-- hello -->
     <tab-bar v-show="$store.state.isTabBarShow"></tab-bar>
-    <section :style="$store.state.isTabBarShow ? 'padding-bottom: 49px;': ''">
+    <section :style="$store.state.isTabBarShow ? 'padding-bottom: 49px;' : ''">
       <!-- 路由容器 -->
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </section>
   </div>
 </template>
@@ -22,29 +24,31 @@ export default {
 }
 </script>
 <style lang="scss">
-*{
+* {
   margin: 0;
   padding: 0;
   // font-size: 20px;
 }
-html,body{
+html,
+body {
   height: 100%;
   width: 100%;
   background-color: #f0f0f0;
   // overflow-x: hidden; // 禁止界面左右滑动,会影响对scroll的监听
 }
-body{
+body {
   font-size: 16px;
 }
-ul,li{
+ul,
+li {
   list-style: none;
 }
 // 页面控制
-#app{
+#app {
   //  height: 100%;
-   width: 100%;
+  width: 100%;
   //  background-color: #eee;
-  section{
+  section {
     // height: 100%;
     // padding-bottom: 0px;
     // background-color: #eee;

@@ -1,27 +1,34 @@
 <template>
   <div id="cinemas">
     <div class="cinemabar">
- <van-nav-bar title="影院" @click-left="onClickLeft" @click-right="onClickRight">
-       <template #left>
-         {{$store.state.cityName}} <van-icon name="arrow-down" />
-       </template>
-      <template #right>
-        <van-icon name="search" />
-      </template>
-    </van-nav-bar>
+      <van-nav-bar
+        title="影院"
+        @click-left="onClickLeft"
+        @click-right="onClickRight"
+      >
+        <template #left>
+          {{ $store.state.cityName }} <van-icon name="arrow-down" />
+        </template>
+        <template #right>
+          <van-icon name="search" />
+        </template>
+      </van-nav-bar>
     </div>
 
     <div class="box">
       <ul>
-        <li v-for="data in $store.state.cinemaList" :key="data.cinemaId"
-        @click="handleChangePage(data.cinemaId)">
+        <li
+          v-for="data in $store.state.cinemaList"
+          :key="data.cinemaId"
+          @click="handleChangePage(data.cinemaId)"
+        >
           <div class="left">
-            <div>{{data.name}}</div>
-            <div class="address">{{data.address}}</div>
+            <div>{{ data.name }}</div>
+            <div class="address">{{ data.address }}</div>
           </div>
           <div class="right">
-            <div style="color: red;">￥{{data.lowPrice/100}}起</div>
-         </div>
+            <div style="color: red">￥{{ data.lowPrice / 100 }}起</div>
+          </div>
         </li>
       </ul>
     </div>
@@ -37,49 +44,15 @@
 export default {
   data () {
     return {
-      cinemaList: []
+      // cinemaList: []
     }
   },
   mounted () {
     // 分发，在没数据时取数据，有数据后就不再取数据
-    if (this.$store.state.cinemaList.length === 0) { // 分发给 异步action
-      this.$store.dispatch('getCinemaData', this.$store.state.cityId)
-        .then(res => {
-          // console.log('cinemas 数据加载完成')
-          // this.$nextTick(() => {
-          //   new BetterScroll('.box', {
-          //     scrollbar: {
-          //       fade: true
-          //     }
-          //   })
-          // })
-        })
-    } else {
-      // console.log('cinemas 使用缓存')
-      // this.$nextTick(() => {
-      //   new BetterScroll('.box', {
-      //     scrollbar: {
-      //       fade: true
-      //     }
-      //   })
-      // })
-    }
-    // http({
-    //   url: `/gateway?cityId=${this.$store.state.cityId}&ticketFlag=1&k=8708327`,
-    //   headers: {
-    //     'X-Host': 'mall.film-ticket.cinema.list'
-    //   }
-    // }).then(res => {
-    //   // console.log(res.data.data.cinemas)
-    //   this.cinemaList = res.data.data.cinemas
-    //   this.$nextTick(() => {
-    //     new BetterScroll('.box', {
-    //       scrollbar: {
-    //         fade: true
-    //       }
-    //     }) // BetterScoll引入，提高性能
-    //   })
-    // })
+    this.$store.dispatch('getCinemaData', this.$store.state.cityId)
+      .then(res => {
+        console.log('cinemas 数据加载完成')
+      })
   },
   methods: {
     onClickLeft () {
@@ -109,60 +82,61 @@ export default {
 </script>
 
 <style lang="scss">
-#cinemas{
+#cinemas {
   height: 100%;
-  .cinemabar{
+  .cinemabar {
     height: 49px;
     width: 100%;
     position: sticky;
     top: 0px;
     z-index: 100;
   }
-.box{
-  width: 100%;
-  height: 100%;//高度未作修正，需要修正滚动条位置, 使得BetterScroll滚动条不溢出
-  // padding-bottom: 49px;
-  overflow: hidden;
-  background-color: #fff;
-  position: relative;
-  li{
-    padding: 15px;
-    font-size: 15px;
-    display: flex;
-    justify-content:flex-end;
-    .left{
-      // flex: 4; // 两个flex可能会不好用
-      width: 80%;
-      .address{
-        max-width: 100%;
-        color: gray;
-        font-size: 12px;
-        margin-top: 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+  .box {
+    width: 100%;
+    height: 100%; //高度未作修正，需要修正滚动条位置, 使得BetterScroll滚动条不溢出
+    // padding-bottom: 49px;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+    li {
+      padding: 15px;
+      font-size: 15px;
+      display: flex;
+      justify-content: flex-end;
+      .left {
+        // flex: 4; // 两个flex可能会不好用
+        width: 80%;
+        .address {
+          max-width: 100%;
+          color: gray;
+          font-size: 12px;
+          margin-top: 5px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      .right {
+        flex: 1;
       }
     }
-    .right{
-      flex: 1;
-    }
   }
-}
-.van-nav-bar{
-  line-height: 22px;
-  .van-nav-bar__content {
-    height: 49px;
-    .van-nav-bar__left, .van-nav-bar__right{
+  .van-nav-bar {
+    line-height: 22px;
+    .van-nav-bar__content {
       height: 49px;
-      font-size: 14px;
-      .van-icon{
-        font-size: 20px;
+      .van-nav-bar__left,
+      .van-nav-bar__right {
+        height: 49px;
+        font-size: 14px;
+        .van-icon {
+          font-size: 20px;
+        }
+      }
+      .van-nav-bar__title {
+        font-size: 16px;
       }
     }
-    .van-nav-bar__title{
-      font-size: 16px;
-    }
   }
-}
 }
 </style>

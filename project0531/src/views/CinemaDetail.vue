@@ -83,28 +83,30 @@
     </div>
 
     <!-- 放映时间表 -->
-    <div class="show-list" v-if="schedule.length !== 0">
-      <li
-        class="show-list-item"
-        v-for="item in schedule"
-        :key="item.scheduleId"
-      >
-        <div class="left">
-          <span>{{ formatTime(item.showAt) }}</span>
-          <span>{{ formatTime(item.endAt) }} 散场</span>
-        </div>
-        <div class="middle">
-          <span>{{ item.filmLanguage }}{{ item.imagery }}</span>
-          <span>{{ item.hallName }}</span>
-        </div>
-        <div class="right">
-          <span>￥{{ item.salePrice / 100 }}</span>
-          <span>购票</span>
-        </div>
-      </li>
-      <div class="no-more">没有更多了</div>
-    </div>
-    <div class="show-list-empty" v-else>暂无场次</div>
+    <keep-alive>
+      <div class="show-list" v-if="schedule.length !== 0">
+        <li
+          class="show-list-item"
+          v-for="item in schedule"
+          :key="item.scheduleId"
+        >
+          <div class="left">
+            <span>{{ formatTime(item.showAt) }}</span>
+            <span>{{ formatTime(item.endAt) }} 散场</span>
+          </div>
+          <div class="middle">
+            <span>{{ item.filmLanguage }}{{ item.imagery }}</span>
+            <span>{{ item.hallName }}</span>
+          </div>
+          <div class="right">
+            <span>￥{{ item.salePrice / 100 }}</span>
+            <span>购票</span>
+          </div>
+        </li>
+        <div class="no-more">没有更多了</div>
+      </div>
+      <div class="show-list-empty" v-else>暂无场次</div>
+    </keep-alive>
   </div>
 </template>
 
@@ -167,6 +169,7 @@ export default {
     getSchedule (date) {
       // 获取放映时间表
       // console.log(date)
+      // return
       http({
         url: `/gateway/?filmId=${this.film.filmId}&cinemaId=${this.$route.params.id
           }&date=${date}&k=${Math.floor(Math.random() * 10000000)}`,

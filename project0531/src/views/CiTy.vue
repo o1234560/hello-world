@@ -1,36 +1,52 @@
 <template>
   <div id="city">
-  <van-search
-    v-model="value"
-    show-action
-    @cancel="handleCancel()"
-    placeholder="请输入城市名"
-  />
+    <van-search
+      v-model="value"
+      show-action
+      @cancel="handleCancel()"
+      placeholder="请输入城市名"
+    />
 
-  <!-- 热门城市 -->
-  <ul class="hot" v-show="!show">
-    <div>热门城市</div>
-    <ul class="hot-city">
-      <li v-for="data in citys" :key="data.cityId">
-        <button v-if="data.isHot===1" @click="handleClick(data)">{{data.name}}</button>
-      </li>
+    <!-- 热门城市 -->
+    <ul class="hot" v-show="!show">
+      <div>热门城市</div>
+      <ul class="hot-city">
+        <li v-for="data in citys" :key="data.cityId">
+          <button v-if="data.isHot === 1" @click="handleClick(data)">
+            {{ data.name }}
+          </button>
+        </li>
+      </ul>
     </ul>
-  </ul>
 
-  <!-- city 列表 -->
-  <van-index-bar v-show="!show" :index-list="computedList" @select="handleChange" :sticky="false">
-    <div v-for="data in cityList" :key="data.type">
-      <van-index-anchor :index="data.type"/>
-      <van-cell  v-for="item in data.list" :title="item.name"
-        :key="item.cityId" @click="handleClick(item)"/>
-    </div>
-  </van-index-bar>
+    <!-- city 列表 -->
+    <van-index-bar
+      v-show="!show"
+      :index-list="computedList"
+      @select="handleChange"
+      :sticky="false"
+    >
+      <div v-for="data in cityList" :key="data.type">
+        <van-index-anchor :index="data.type" />
+        <van-cell
+          v-for="item in data.list"
+          :title="item.name"
+          :key="item.cityId"
+          @click="handleClick(item)"
+        />
+      </div>
+    </van-index-bar>
 
-<!-- 搜索结果 -->
-  <ul class="citys">
-    <van-cell v-for="data in computedList02" :key="data.cityId" v-show="show"
-    @click="handleClick(data)">{{data.name}}</van-cell>
-  </ul>
+    <!-- 搜索结果 -->
+    <ul class="citys">
+      <van-cell
+        v-for="data in computedList02"
+        :key="data.cityId"
+        v-show="show"
+        @click="handleClick(data)"
+        >{{ data.name }}</van-cell
+      >
+    </ul>
   </div>
 </template>
 
@@ -116,8 +132,8 @@ export default {
       // vuex 公共状态管理器
       // this.$store.state.cityName = item.name // 直接修改无法监控
       this.$store.commit('changeCityName', item.name) // mutation 监控, 同步
-      this.$store.commit('changeCityId', item.cityId) // mutation 监控
-      this.$router.back()
+      this.$store.dispatch('changeCityId', item.cityId) // action 监控
+      this.$router.push('/cinemas')
     },
     handleCancel () {
       this.$router.back()
@@ -146,36 +162,36 @@ export default {
 </script>
 
 <style lang="scss">
-.van-toast{
+.van-toast {
   min-width: 20px;
 }
 
-.van-search{
- position: relative;
-//  background-color: #f00;
-//  border-bottom: 1px solid #ddd;
- .van-search__content.van-search__content--square{
-  border-radius: 15px;
- }
- .van-search__action{
-  color: #323233;
- }
+.van-search {
+  position: relative;
+  //  background-color: #f00;
+  //  border-bottom: 1px solid #ddd;
+  .van-search__content.van-search__content--square {
+    border-radius: 15px;
+  }
+  .van-search__action {
+    color: #323233;
+  }
 }
 
-.hot{
+.hot {
   background-color: #fff;
   padding: 16px 0px;
-  div{
+  div {
     font-size: 14px;
     margin-left: 8px;
     margin-bottom: 8px;
     color: #aaa;
   }
-  .hot-city{
+  .hot-city {
     padding-left: 16px;
-    li{
+    li {
       display: inline-block;
-      button{
+      button {
         font-size: 14px;
         margin: 8px 8px;
         padding: 8px 16px;
@@ -185,10 +201,9 @@ export default {
       }
     }
   }
-
 }
 
-.van-index-bar{
+.van-index-bar {
   display: block;
   font-size: 16px;
   .van-index-bar__index {
@@ -197,7 +212,7 @@ export default {
     line-height: 16px;
     // color: #aaa;
     opacity: 0.5;
-  };
+  }
   .van-index-anchor {
     background-color: #f7f8fa;
     color: #aaa;
@@ -205,7 +220,7 @@ export default {
     font-size: 14px;
     line-height: 32px;
   }
-  .van-cell{
+  .van-cell {
     padding: 10px 16px;
     overflow: hidden;
     color: #323233;
@@ -214,9 +229,9 @@ export default {
   }
 }
 
-.citys{
+.citys {
   // background-color: #fff;
-  .van-cell{
+  .van-cell {
     padding: 10px 20px;
   }
 }

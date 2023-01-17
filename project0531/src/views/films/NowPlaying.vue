@@ -3,30 +3,27 @@
     <!-- nowplaying -->
 
     <van-list
-    v-model="loading"
-    :finished="finished"
-    finished-text="没有更多了"
-    :immediate-check="false"
-    @load="onLoad"
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      :immediate-check="false"
+      @load="onLoad"
     >
       <van-cell
-      v-for="data in datalist"
-      :key="data.filmId"
-      @click="handleChangePage(data.filmId)" >
-        <img :src="data.poster">
+        v-for="data in datalist"
+        :key="data.filmId"
+        @click="handleChangePage(data.filmId)"
+      >
+        <img :src="data.poster" />
         <div>
-          <div class="title">{{data.name}}</div>
-          <div class="content ">
-              <div :class="data.grade?'':'hidden'">
-                观众评分: <span style="color:red">{{data.grade}}</span>
-              </div>
-              <div>
-                {{data.nation}} | {{data.runtime}}分钟
-              </div>
-              <div class="actors">
-                主演:{{data.actors | actorsFilter}}
-              </div>
+          <div class="title">{{ data.name }}</div>
+          <div class="content">
+            <div :class="data.grade ? '' : 'hidden'">
+              观众评分: <span style="color: red">{{ data.grade }}</span>
             </div>
+            <div>{{ data.nation }} | {{ data.runtime }}分钟</div>
+            <div class="actors">主演:{{ data.actors | actorsFilter }}</div>
+          </div>
         </div>
         <span class="order">热映中</span>
       </van-cell>
@@ -97,7 +94,7 @@ export default {
     onLoad () {
       // console.log('到底了')
       // onLoad先于mounted，路由返回时先触发onLoad，需要特殊处理
-      if (this.datalist.length === this.total && this.total !== 0) {
+      if (this.datalist.length === this.total) {
         this.finished = true
         return
       }
@@ -113,7 +110,7 @@ export default {
             'X-Host': 'mall.film-ticket.film.list'
           }
         }).then(res => {
-        // console.log(res.data.data.films)
+          // console.log(res.data.data.films)
           this.datalist = [...this.datalist, ...res.data.data.films]
           // loading主动设置成false
           this.loading = false
@@ -123,57 +120,59 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .van-list{
-    width: 100%;
-    background-color: white;
-    .van-cell{
-      // clear: both;
-      overflow: hidden;
-      padding: 15px;
-      line-height: 20px;
-      position: relative;
-      img{
-        width: 66px;
-        float: left;
-        margin-right: 10px;
+.van-list {
+  width: 100%;
+  background-color: white;
+  .van-cell {
+    // clear: both;
+    overflow: hidden;
+    padding: 15px;
+    line-height: 20px;
+    position: relative;
+    img {
+      width: 66px;
+      float: left;
+      margin-right: 10px;
+    }
+    .title {
+      font-size: 16px;
+    }
+    .content {
+      font-size: 13px;
+      color: gray;
+      div {
+        margin-top: 3px;
       }
-      .title{
-        font-size: 16px;
-      }
-      .content{
-        font-size: 13px;
-        color: gray;
-        div{
-          margin-top: 3px;
-        }
-        .actors{
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          width: 200px;
-        }
-      }
-      .order{
-        position: absolute;
-        right: 16px;
-        top: 32px;
-        font-size: 16px;
-        padding: 0px 8px;
-        border-radius: 8px;
-        // border: 1px solid red;
-        background-color: red;
-        color: #fff;
-        opacity: 0.7;
+      .actors {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 200px;
       }
     }
-    .van-list__error-text, .van-list__finished-text, .van-list__loading {
+    .order {
+      position: absolute;
+      right: 16px;
+      top: 32px;
+      font-size: 16px;
+      padding: 0px 8px;
+      border-radius: 8px;
+      // border: 1px solid red;
+      background-color: red;
+      color: #fff;
+      opacity: 0.7;
+    }
+  }
+  .van-list__error-text,
+  .van-list__finished-text,
+  .van-list__loading {
     color: #969799;
     font-size: 14px;
     line-height: 50px;
     text-align: center;
+  }
 }
-  }
-  .hidden{
-    visibility: hidden;
-  }
+.hidden {
+  visibility: hidden;
+}
 </style>

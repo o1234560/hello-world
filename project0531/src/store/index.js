@@ -29,7 +29,7 @@ export default new Vuex.Store({
       // console.log(cityName)
       state.cityName = cityName
     },
-    changeCityId (state, cityId) {
+    CHANGE_CITY_ID (state, cityId) {
       // console.log(cityName)
       state.cityId = cityId
     },
@@ -62,6 +62,10 @@ export default new Vuex.Store({
         // console.log(res.data.data.cinemas)
         store.commit('changeCinemaData', res.data.data.cinemas)
       })
+    },
+    changeCityId (store, cityId) {
+      store.commit('CHANGE_CITY_ID', cityId)
+      store.dispatch('getCinemaData', cityId)
     }
   },
   modules: {
